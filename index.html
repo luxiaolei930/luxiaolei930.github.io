@@ -1,1 +1,1094 @@
-Hello, world!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T&amp;I NUS | Translation &amp; Interpreting Research Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #1e293b;
+            line-height: 1.75;
+            background: #fafafa;
+        }
+        a { color: #7c3aed; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2.5rem;
+            height: 54px;
+            background: rgba(13, 8, 32, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+        .nav-name { font-size: 1.05rem; font-weight: 600; color: #fff; letter-spacing: 0.02em; }
+        .nav-links { display: flex; gap: 1.35rem; list-style: none; flex-wrap: wrap; justify-content: flex-end; }
+        .nav-links a { color: rgba(255,255,255,0.65); font-size: 0.8rem; font-weight: 500; transition: color 0.18s; white-space: nowrap; }
+        .nav-links a:hover { color: #fff; text-decoration: none; }
+        .nav-links a.active { color: #c4b5fd; text-decoration: none; }
+
+        .hero {
+            background: linear-gradient(140deg, #0d0820 0%, #2e1065 45%, #5b21b6 100%);
+            padding: 110px 0 70px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%; right: -10%;
+            width: 70%; height: 160%;
+            background: radial-gradient(ellipse, rgba(124,58,237,0.25) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        .hero-inner {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 0 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 3.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-photo { flex-shrink: 0; }
+        .hero-photo img, .photo-fallback {
+            width: 172px; height: 172px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: top;
+            border: 3px solid rgba(255,255,255,0.28);
+            box-shadow: 0 0 0 6px rgba(124,58,237,0.22), 0 12px 40px rgba(0,0,0,0.45);
+        }
+        .photo-fallback {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #4c1d95, #7c3aed);
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.92);
+            letter-spacing: -0.03em;
+        }
+        .hero-text h1 {
+            font-size: 2.75rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.025em;
+            line-height: 1.15;
+            margin-bottom: 0.45rem;
+        }
+        .hero-subtitle {
+            font-size: 0.73rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.52);
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            margin-bottom: 1.3rem;
+        }
+        .hero-affil {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            color: rgba(255,255,255,0.82);
+            font-size: 0.92rem;
+            margin-bottom: 0.3rem;
+        }
+        .hero-affil a { color: rgba(255,255,255,0.82); }
+        .hero-affil a:hover { color: #fff; text-decoration: underline; }
+        .hero-affil i { width: 15px; font-size: 0.85rem; color: rgba(255,255,255,0.45); flex-shrink: 0; }
+        .hero-buttons { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-top: 1.5rem; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.42rem 1.05rem;
+            border-radius: 9999px;
+            font-size: 0.83rem;
+            font-weight: 500;
+            transition: all 0.18s;
+            border: 1px solid rgba(255,255,255,0.22);
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+        .btn:hover { background: rgba(255,255,255,0.2); text-decoration: none; color: #fff; border-color: rgba(255,255,255,0.35); }
+        .btn-outline { background: transparent; border-color: rgba(255,255,255,0.35); }
+        .btn-outline:hover { background: rgba(255,255,255,0.12); }
+
+        .wave-wrap { background: linear-gradient(140deg, #0d0820 0%, #2e1065 45%, #5b21b6 100%); line-height: 0; }
+        .wave-wrap svg { display: block; }
+
+        .content { background: #fafafa; padding: 3.5rem 0 5rem; }
+        .container { max-width: 920px; margin: 0 auto; padding: 0 2.5rem; }
+        .section { margin-bottom: 3.8rem; }
+        .section-title {
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: #2e1065;
+            margin-bottom: 0.3rem;
+            letter-spacing: -0.01em;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 38px; height: 3px;
+            background: linear-gradient(90deg, #7c3aed, #c084fc);
+            margin-top: 0.4rem;
+            border-radius: 2px;
+        }
+
+        .bio p { color: #374151; font-size: 0.96rem; margin-bottom: 0.9rem; }
+        .hl {
+            display: inline-block;
+            background: #f5f3ff;
+            color: #6d28d9;
+            padding: 0.08rem 0.55rem;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 0.92em;
+        }
+
+        .ri-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.1rem;
+            margin-top: 1.6rem;
+        }
+        .ri-card {
+            background: #fff;
+            border: 1px solid #e9e3f8;
+            border-radius: 14px;
+            padding: 1.35rem 1.25rem 1.2rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .ri-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(109,40,217,0.1); }
+        .ri-icon {
+            width: 40px; height: 40px;
+            background: #f5f3ff;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 0.85rem;
+            font-size: 1.05rem;
+            color: #7c3aed;
+        }
+        .ri-card h4 { font-size: 0.88rem; font-weight: 700; color: #1e293b; margin-bottom: 0.45rem; line-height: 1.3; }
+        .ri-card p { font-size: 0.78rem; color: #64748b; line-height: 1.55; margin-bottom: 0.75rem; }
+        .ri-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+        .ri-tag {
+            font-size: 0.7rem;
+            padding: 0.13rem 0.52rem;
+            background: #f5f3ff;
+            color: #6d28d9;
+            border-radius: 9999px;
+            font-weight: 500;
+        }
+
+        .rt-panel {
+            background: #fff;
+            border: 1px solid #e9e3f8;
+            border-radius: 12px;
+            padding: 1.15rem 1.4rem;
+            margin-top: 0.9rem;
+        }
+        .rt-header { display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.65rem; }
+        .rt-header i { color: #7c3aed; font-size: 0.9rem; }
+        .rt-header strong { font-size: 0.92rem; color: #1e293b; }
+        .rt-list { list-style: none; padding: 0; }
+        .rt-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.855rem;
+            color: #4b5563;
+            margin-bottom: 0.38rem;
+            line-height: 1.5;
+        }
+        .rt-list li::before { content: '›'; color: #7c3aed; font-weight: 700; flex-shrink: 0; }
+
+        .teach-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1.2rem;
+        }
+        .teach-card {
+            background: #fff;
+            border: 1px solid #e9e3f8;
+            border-radius: 12px;
+            padding: 1.1rem 1.25rem;
+        }
+        .teach-code { font-size: 0.72rem; font-weight: 700; color: #7c3aed; margin-bottom: 0.3rem; }
+        .teach-name { font-size: 0.9rem; font-weight: 600; color: #1e293b; margin-bottom: 0.2rem; }
+        .teach-cn { font-size: 0.82rem; color: #64748b; }
+
+        .recruit-box {
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+            border: 1px solid #ddd6fe;
+            border-radius: 14px;
+            padding: 1.5rem 1.8rem;
+            font-size: 0.92rem;
+            color: #4c1d95;
+            line-height: 1.7;
+        }
+        .recruit-box strong { color: #6d28d9; }
+
+        .services-box {
+            background: #fff;
+            border: 1px solid #e9e3f8;
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            font-size: 0.9rem;
+            color: #374151;
+            line-height: 1.7;
+        }
+
+        .news-list { display: flex; flex-direction: column; gap: 0.85rem; }
+        .news-item {
+            background: #fff;
+            border: 1px solid #e9e3f8;
+            border-radius: 12px;
+            padding: 1.1rem 1.35rem;
+            display: flex;
+            gap: 1.1rem;
+            align-items: flex-start;
+            transition: box-shadow 0.2s;
+        }
+        .news-item:hover { box-shadow: 0 6px 20px rgba(109,40,217,0.08); }
+        .news-date {
+            flex-shrink: 0;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #7c3aed;
+            background: #f5f3ff;
+            border: 1px solid #ddd6fe;
+            padding: 0.35rem 0.6rem;
+            border-radius: 8px;
+            line-height: 1.4;
+            text-align: center;
+            min-width: 4.2rem;
+        }
+        .news-body h4 { font-size: 0.92rem; font-weight: 700; color: #1e293b; margin-bottom: 0.3rem; }
+        .news-body p { font-size: 0.86rem; color: #64748b; line-height: 1.6; }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+        .contact-card {
+            background: #fff;
+            border: 1px solid #e9e3f8;
+            border-radius: 12px;
+            padding: 1.2rem 1.4rem;
+        }
+        .contact-card h4 {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.55rem;
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+        .contact-card h4 i { color: #7c3aed; font-size: 0.85rem; }
+        .contact-card p, .contact-card li {
+            font-size: 0.86rem;
+            color: #4b5563;
+            line-height: 1.65;
+        }
+        .contact-card ul { list-style: none; padding: 0; }
+        .contact-card li { margin-bottom: 0.3rem; }
+        .contact-subtitle {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin: 1.4rem 0 0.9rem;
+        }
+
+        .field-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1rem; }
+        .field-tag {
+            font-size: 0.8rem;
+            padding: 0.3rem 0.75rem;
+            background: #fff;
+            border: 1px solid #ddd6fe;
+            color: #5b21b6;
+            border-radius: 9999px;
+            font-weight: 500;
+        }
+
+        .lab-hero-inner { flex-direction: column; text-align: center; gap: 1.2rem; }
+        .lab-hero-inner .hero-text { max-width: 760px; }
+        .lab-hero-inner .hero-affil { justify-content: center; }
+        .lab-hero-inner .hero-buttons { justify-content: center; }
+        .lab-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.7);
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 0.3rem 0.85rem;
+            border-radius: 9999px;
+            margin-bottom: 1rem;
+        }
+
+        .team-group { margin-top: 1.8rem; }
+        .team-group-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #7c3aed;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+        .team-grid { display: grid; grid-template-columns: 1fr; gap: 1.2rem; }
+
+        /* ── PI card ── */
+        .team-card {
+            display: flex;
+            gap: 1.4rem;
+            background: #fff;
+            border: 1px solid #e9e3f8;
+            border-radius: 14px;
+            padding: 1.4rem 1.5rem;
+            transition: box-shadow 0.2s;
+        }
+        .team-card:hover { box-shadow: 0 8px 24px rgba(109,40,217,0.1); }
+        .team-card.featured {
+            border-color: #c4b5fd;
+            background: linear-gradient(135deg, #fff 0%, #faf5ff 100%);
+            box-shadow: 0 4px 20px rgba(109,40,217,0.08);
+        }
+        .team-photo { flex-shrink: 0; }
+        .team-photo img, .team-photo .photo-fallback {
+            width: 108px; height: 108px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: top;
+            border: 2px solid #ddd6fe;
+        }
+        .team-photo .photo-fallback {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #4c1d95, #7c3aed);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .team-body { flex: 1; min-width: 0; }
+        .team-name { font-size: 1.15rem; font-weight: 700; color: #1e293b; margin-bottom: 0.15rem; }
+        .team-role { font-size: 0.82rem; font-weight: 600; color: #7c3aed; margin-bottom: 0.35rem; }
+        .team-affil { font-size: 0.84rem; color: #64748b; margin-bottom: 0.65rem; line-height: 1.5; }
+        .team-bio { font-size: 0.88rem; color: #4b5563; line-height: 1.65; margin-bottom: 0.75rem; }
+        .team-links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .team-link {
+            font-size: 0.76rem;
+            font-weight: 600;
+            color: #6d28d9;
+            background: #f5f3ff;
+            border: 1px solid #ddd6fe;
+            padding: 0.2rem 0.65rem;
+            border-radius: 9999px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .team-link:hover { background: #ede9fe; text-decoration: none; }
+        .team-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.55rem; }
+        .team-tag {
+            font-size: 0.7rem;
+            padding: 0.12rem 0.5rem;
+            background: #f1f5f9;
+            color: #64748b;
+            border-radius: 9999px;
+            font-weight: 500;
+        }
+
+        /* ── Members carousel ── */
+        .team-carousel-section { margin-top: 1rem; }
+        .team-carousel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.2rem;
+        }
+        .carousel-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+        .carousel-btn {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            border: 1px solid #ddd6fe;
+            background: #fff;
+            color: #7c3aed;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            transition: all 0.18s;
+        }
+        .carousel-btn:hover:not(:disabled) {
+            background: #7c3aed;
+            color: #fff;
+            border-color: #7c3aed;
+        }
+        .carousel-btn:disabled { opacity: 0.35; cursor: default; }
+
+        .team-carousel-viewport {
+            overflow: hidden;
+            border-radius: 16px;
+            position: relative;
+        }
+        .team-carousel-track {
+            display: flex;
+            transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .team-slide {
+            flex: 0 0 100%;
+            padding: 0 0.15rem;
+            box-sizing: border-box;
+        }
+        .member-card {
+            background: #fff;
+            border: 1px solid #e9e3f8;
+            border-radius: 16px;
+            padding: 2rem 2rem 1.6rem;
+            text-align: center;
+            min-height: 420px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 2px 12px rgba(109,40,217,0.05);
+            transition: box-shadow 0.25s;
+        }
+        .member-card:hover { box-shadow: 0 12px 32px rgba(109,40,217,0.12); }
+        .member-card .team-photo img,
+        .member-card .team-photo .photo-fallback {
+            width: 120px; height: 120px;
+            border: 3px solid #ede9fe;
+            box-shadow: 0 4px 16px rgba(109,40,217,0.15);
+            margin-bottom: 1.1rem;
+        }
+        .member-card .team-photo .photo-fallback { font-size: 1.75rem; }
+        .member-card .team-name { font-size: 1.25rem; margin-bottom: 0.25rem; }
+        .member-card .team-role {
+            display: inline-block;
+            background: #f5f3ff;
+            border: 1px solid #ddd6fe;
+            padding: 0.15rem 0.7rem;
+            border-radius: 9999px;
+            margin-bottom: 0.5rem;
+        }
+        .member-card .team-affil {
+            max-width: 480px;
+            margin-bottom: 1rem;
+            font-size: 0.82rem;
+        }
+        .member-card .team-bio {
+            max-width: 520px;
+            font-size: 0.86rem;
+            line-height: 1.7;
+            flex: 1;
+            margin-bottom: 1rem;
+        }
+        .member-card .team-links { justify-content: center; }
+        .member-card .team-tags { justify-content: center; }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.2rem;
+        }
+        .carousel-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            border: none;
+            background: #ddd6fe;
+            cursor: pointer;
+            padding: 0;
+            transition: all 0.2s;
+        }
+        .carousel-dot.active {
+            background: #7c3aed;
+            width: 24px;
+            border-radius: 4px;
+        }
+        .carousel-counter {
+            font-size: 0.78rem;
+            color: #94a3b8;
+            font-weight: 500;
+            min-width: 3rem;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            border-top: 1px solid #ede9fe;
+            background: #fafafa;
+        }
+        footer a { color: #94a3b8; }
+        footer a:hover { color: #7c3aed; }
+
+        @media (max-width: 768px) {
+            .ri-grid { grid-template-columns: 1fr 1fr; }
+            .teach-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .news-item { flex-direction: column; gap: 0.6rem; }
+            nav { padding: 0 1.2rem; height: auto; min-height: 54px; flex-wrap: wrap; gap: 0.5rem; padding-top: 0.6rem; padding-bottom: 0.6rem; }
+            .nav-links { gap: 0.75rem 1rem; justify-content: center; width: 100%; }
+            .team-card { flex-direction: column; align-items: center; text-align: center; }
+            .team-links { justify-content: center; }
+            .team-tags { justify-content: center; }
+            .member-card { padding: 1.5rem 1.2rem 1.3rem; min-height: auto; }
+            .member-card .team-bio { font-size: 0.84rem; }
+            .hero-inner { flex-direction: column; text-align: center; gap: 1.8rem; }
+            .hero-affil { justify-content: center; }
+            .hero-buttons { justify-content: center; }
+            .hero-photo img, .photo-fallback { width: 145px; height: 145px; }
+            .hero-text h1 { font-size: 2.1rem; }
+            nav { padding: 0 1.2rem; }
+            .nav-links { gap: 0.65rem; }
+            .nav-links a { font-size: 0.74rem; }
+        }
+        @media (max-width: 480px) {
+            .ri-grid { grid-template-columns: 1fr; }
+            .nav-links { gap: 0.5rem 0.7rem; }
+            .nav-links a { font-size: 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#home" class="nav-name" style="text-decoration:none;">T&amp;I NUS</a>
+    <ul class="nav-links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#people">People</a></li>
+        <li><a href="#research">Research Interests</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<section class="hero lab-hero" id="home">
+    <div class="hero-inner lab-hero-inner">
+        <div class="hero-text">
+            <div class="lab-badge"><i class="fa-solid fa-flask-vial"></i> Translation &amp; Interpreting Research Lab</div>
+            <h1>T&amp;I NUS</h1>
+            <p class="hero-subtitle">Quality Assessment &nbsp;·&nbsp; Language Technology &nbsp;·&nbsp; Human–AI Evaluation</p>
+
+            <div class="hero-affil">
+                <i class="fa-solid fa-building-columns"></i>
+                <a href="https://fass.nus.edu.sg/cs/" target="_blank">Department of Chinese Studies, NUS</a>
+            </div>
+            <div class="hero-affil">
+                <i class="fa-solid fa-user-tie"></i>
+                <span>Director: <strong>Prof. Chao Han</strong></span>
+            </div>
+            <div class="hero-affil">
+                <i class="fa-solid fa-envelope"></i>
+                <span>chaohan [at] nus.edu.sg</span>
+            </div>
+
+            <div class="hero-buttons">
+                <a href="#people" class="btn">
+                    <i class="fa-solid fa-users"></i> People
+                </a>
+                <a href="publications.html" class="btn">
+                    <i class="fa-solid fa-book-open"></i> Publications
+                </a>
+                <a href="#contact" class="btn btn-outline">
+                    <i class="fa-solid fa-envelope"></i> Contact
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="wave-wrap">
+    <svg viewBox="0 0 1440 64" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="width:100%;height:64px;">
+        <path d="M0,32 C240,64 480,0 720,28 C960,56 1200,8 1440,32 L1440,64 L0,64 Z" fill="#fafafa"/>
+    </svg>
+</div>
+
+<div class="content">
+<div class="container">
+
+    <section class="section bio" id="biography">
+        <h2 class="section-title">About the Lab</h2>
+        <p>
+            <strong>T&amp;I NUS</strong> is a research lab at the
+            <a href="https://fass.nus.edu.sg/cs/" target="_blank">Department of Chinese Studies</a>,
+            <a href="https://www.nus.edu.sg/" target="_blank">National University of Singapore (NUS)</a>,
+            directed by <strong>Prof. Chao Han</strong>.
+            The lab is affiliated with the
+            <a href="https://fass.nus.edu.sg/wbsrc/translation-and-interpreting-research-group/" target="_blank">Translation &amp; Interpreting Research Group</a>
+            at the Wan Boo Sow Research Centre, the Centre for Computational Social Science and Humanities at FASS,
+            and the NUS Artificial Intelligence Institute.
+        </p>
+        <p>
+            We are an interdisciplinary team working at the intersection of
+            <span class="hl">Translation Studies</span>,
+            <span class="hl">Language Assessment</span>, and
+            <span class="hl">Natural Language Processing</span>.
+            By integrating psychometric modeling, cognitive process tracing, and computational techniques,
+            we investigate both manual and automated evaluation of human- and machine-generated
+            translation and interpreting (T&amp;I).
+        </p>
+        <p>
+            Our programmatic research agenda centres on
+            <strong>Quality Assessment in Multilingual, Multimodal, and Multiagent Translation and Interpreting</strong>
+            (<span class="hl">QAM³T&amp;I</span>) — advancing evaluation methodologies across languages,
+            communication modes, and agent types for T&amp;I training, professional certification,
+            language learning, and the language services industry.
+        </p>
+        <div class="field-tags">
+            <span class="field-tag">T&amp;I Quality Assessment</span>
+            <span class="field-tag">Automated Evaluation</span>
+            <span class="field-tag">LLM &amp; NLP</span>
+            <span class="field-tag">Psychometrics</span>
+            <span class="field-tag">Meta-research</span>
+        </div>
+    </section>
+
+    <section class="section" id="news">
+        <h2 class="section-title">News</h2>
+        <div class="news-list">
+            <article class="news-item">
+                <div class="news-date">Jun<br>2026</div>
+                <div class="news-body">
+                    <h4>T&amp;I NUS lab website launched</h4>
+                    <p>Welcome to our new online home. Explore our research on quality assessment, language technology, and human–AI evaluation in translation and interpreting.</p>
+                </div>
+            </article>
+            <article class="news-item">
+                <div class="news-date">2025</div>
+                <div class="news-body">
+                    <h4>New publications on LLM-based T&amp;I assessment</h4>
+                    <p>Recent work from the lab examines generative AI for interpreting performance evaluation and human–AI teaming frameworks. See the <a href="publications.html">publications page</a> for details.</p>
+                </div>
+            </article>
+            <article class="news-item">
+                <div class="news-date">Open</div>
+                <div class="news-body">
+                    <h4>Recruiting PhD students &amp; collaborators</h4>
+                    <p>The lab welcomes motivated researchers in T&amp;I studies, language assessment, computational linguistics, and related fields. See <a href="#contact">Contact</a> for how to reach us.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="section" id="people">
+        <h2 class="section-title">People</h2>
+
+        <div class="team-group">
+            <div class="team-group-label" style="margin-bottom:1rem;">Principal Investigator</div>
+            <div class="team-grid">
+                <div class="team-card featured">
+                    <div class="team-photo">
+                        <img src="image/hc.jpeg" alt="Chao Han"
+                             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                        <div class="photo-fallback" style="display:none;">CH</div>
+                    </div>
+                    <div class="team-body">
+                        <div class="team-name">Chao Han</div>
+                        <div class="team-role">Associate Professor (Dean's Chair) · Lab Director</div>
+                        <div class="team-affil">Department of Chinese Studies, National University of Singapore</div>
+                        <p class="team-bio">
+                            Prof. Han is an interdisciplinary applied linguist whose work integrates psychometric modeling,
+                            cognitive process tracing, and NLP to advance manual and automated T&amp;I evaluation.
+                            He serves as Assistant Dean (Research) of FASS and as Associate Editor of
+                            <em>Language Testing in Asia</em>.
+                        </p>
+                        <div class="team-links">
+                            <a href="https://scholar.google.com/citations?user=wLx0mIoAAAAJ&hl=en" target="_blank" class="team-link">
+                                <i class="ai ai-google-scholar"></i> Google Scholar
+                            </a>
+                            <a href="https://discovery.nus.edu.sg/25035-chao-han/about" target="_blank" class="team-link">
+                                <i class="fa-solid fa-user"></i> NUS Discovery
+                            </a>
+                            <a href="mailto:chaohan@nus.edu.sg" class="team-link">
+                                <i class="fa-solid fa-envelope"></i> Email
+                            </a>
+                        </div>
+                        <div class="team-tags">
+                            <span class="team-tag">QAM³T&amp;I</span>
+                            <span class="team-tag">Language Assessment</span>
+                            <span class="team-tag">LLM Evaluation</span>
+                            <span class="team-tag">Rater Cognition</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-group team-carousel-section">
+            <div class="team-carousel-header">
+                <span class="team-group-label">Members</span>
+                <div class="carousel-controls">
+                    <button class="carousel-btn" id="team-prev" aria-label="Previous member">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <span class="carousel-counter" id="team-counter">1 / 3</span>
+                    <button class="carousel-btn" id="team-next" aria-label="Next member">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="team-carousel-viewport" id="team-carousel">
+                <div class="team-carousel-track" id="team-track">
+
+                    <div class="team-slide">
+                        <div class="member-card">
+                            <div class="team-photo">
+                                <div class="photo-fallback">XL</div>
+                            </div>
+                            <div class="team-name">Xiaolei Lu</div>
+                            <div class="team-role">Associate Professor</div>
+                            <div class="team-affil">College of Foreign Languages and Cultures, Xiamen University</div>
+                            <p class="team-bio">
+                                Dr. Lu received her PhD from Fudan University and has been at Xiamen University since 2018.
+                                Her research focuses on language intelligence, translation technology, and automated T&amp;I assessment.
+                                She co-authored <em>Applied Corpus Processing with Python</em> (2021) and publishes in
+                                <em>CALL</em>, <em>Interpreting</em>, and <em>Target</em>.
+                                A long-term lab collaborator working on MT metrics, neural quality estimation, and LLM-based scoring.
+                            </p>
+                            <div class="team-links">
+                                <a href="https://www.researchgate.net/profile/Xiaolei-Lu-3" target="_blank" class="team-link">
+                                    <i class="ai ai-researchgate"></i> ResearchGate
+                                </a>
+                                <a href="https://orcid.org/0000-0002-6929-4110" target="_blank" class="team-link">
+                                    <i class="ai ai-orcid"></i> ORCID
+                                </a>
+                                <a href="https://faculty.xmu.edu.cn/LXL123/zh_CN/index.htm" target="_blank" class="team-link">
+                                    <i class="fa-solid fa-globe"></i> XMU Homepage
+                                </a>
+                            </div>
+                            <div class="team-tags">
+                                <span class="team-tag">Corpus Processing</span>
+                                <span class="team-tag">Translation Technology</span>
+                                <span class="team-tag">Automated Assessment</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="team-slide">
+                        <div class="member-card">
+                            <div class="team-photo">
+                                <div class="photo-fallback">SC</div>
+                            </div>
+                            <div class="team-name">Shirong Chen</div>
+                            <div class="team-role">Researcher</div>
+                            <div class="team-affil">College of Foreign Languages and Cultures, Xiamen University</div>
+                            <p class="team-bio">
+                                Dr. Chen specialises in translation and interpreting assessment, rater cognition,
+                                peer assessment, and formative feedback. Her empirical work uses eye-tracking,
+                                think-aloud protocols, and interviews to study how raters evaluate T&amp;I quality.
+                                She has co-authored papers in <em>Target</em>, <em>Interpreting</em>,
+                                and <em>Asia Pacific Education Researcher</em>.
+                            </p>
+                            <div class="team-links">
+                                <a href="https://www.researchgate.net/profile/Shirong-Chen-2" target="_blank" class="team-link">
+                                    <i class="ai ai-researchgate"></i> ResearchGate
+                                </a>
+                            </div>
+                            <div class="team-tags">
+                                <span class="team-tag">Rater Cognition</span>
+                                <span class="team-tag">Peer Assessment</span>
+                                <span class="team-tag">Eye Tracking</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="team-slide">
+                        <div class="member-card">
+                            <div class="team-photo">
+                                <div class="photo-fallback">ZJ</div>
+                            </div>
+                            <div class="team-name">Zhaokun Jiang</div>
+                            <div class="team-role">PhD Candidate</div>
+                            <div class="team-affil">Department of Chinese Studies, National University of Singapore</div>
+                            <p class="team-bio">
+                                Zhaokun holds a B.A. from Xiamen University and an MTI from Shanghai Jiao Tong University.
+                                Her research bridges language and technology — using computational modeling for T&amp;I quality
+                                assessment and human–computer collaboration. Her PhD project develops a GenAI-based,
+                                human–AI teaming framework for Chinese–English interpreting performance assessment.
+                            </p>
+                            <div class="team-links">
+                                <a href="https://fass.nus.edu.sg/cs/people/jiang-zhaokun-%e5%a7%9c%e5%85%86%e5%9d%a4/" target="_blank" class="team-link">
+                                    <i class="fa-solid fa-user"></i> NUS Profile
+                                </a>
+                                <a href="https://www.researchgate.net/profile/Zhaokun-Jiang/research" target="_blank" class="team-link">
+                                    <i class="ai ai-researchgate"></i> ResearchGate
+                                </a>
+                            </div>
+                            <div class="team-tags">
+                                <span class="team-tag">GenAI Assessment</span>
+                                <span class="team-tag">Human–AI Teaming</span>
+                                <span class="team-tag">HCI</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="carousel-dots" id="team-dots">
+                <button class="carousel-dot active" data-index="0" aria-label="Member 1"></button>
+                <button class="carousel-dot" data-index="1" aria-label="Member 2"></button>
+                <button class="carousel-dot" data-index="2" aria-label="Member 3"></button>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="research">
+        <h2 class="section-title">Research Interests</h2>
+        <div class="ri-grid">
+            <div class="ri-card">
+                <div class="ri-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                <h4>T&amp;I Quality Assessment</h4>
+                <p>Manual and automated evaluation of human- and machine-generated translation and interpreting.</p>
+                <div class="ri-tags">
+                    <span class="ri-tag">Rubrics</span>
+                    <span class="ri-tag">Rasch</span>
+                    <span class="ri-tag">QAM³T&amp;I</span>
+                </div>
+            </div>
+            <div class="ri-card">
+                <div class="ri-icon"><i class="fa-solid fa-robot"></i></div>
+                <h4>AI &amp; LLM Evaluation</h4>
+                <p>Repurposing MT metrics and large language models for automatic T&amp;I scoring and feedback.</p>
+                <div class="ri-tags">
+                    <span class="ri-tag">BLEU</span>
+                    <span class="ri-tag">GPT-4o</span>
+                    <span class="ri-tag">E-raters</span>
+                </div>
+            </div>
+            <div class="ri-card">
+                <div class="ri-icon"><i class="fa-solid fa-eye"></i></div>
+                <h4>Rater Cognition</h4>
+                <p>Modeling evaluators' mental processes via eye tracking, think-aloud, and keystroke logging.</p>
+                <div class="ri-tags">
+                    <span class="ri-tag">Eye Tracking</span>
+                    <span class="ri-tag">Process Tracing</span>
+                    <span class="ri-tag">Peer Assessment</span>
+                </div>
+            </div>
+            <div class="ri-card">
+                <div class="ri-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <h4>Meta-research</h4>
+                <p>Systematic reviews, replication studies, and meta-analyses in translation and language testing.</p>
+                <div class="ri-tags">
+                    <span class="ri-tag">Replication</span>
+                    <span class="ri-tag">Statistics</span>
+                    <span class="ri-tag">Methodology</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="projects">
+        <h2 class="section-title">Projects</h2>
+        <div class="rt-panel" style="margin-top:0;">
+            <div class="rt-header">
+                <i class="fa-solid fa-microscope"></i>
+                <strong>Current Research Projects</strong>
+            </div>
+            <ul class="rt-list">
+                <li><strong>Cognitive processes of human evaluators:</strong> Modeling mental operations and decision-making strategies in assessing human- and machine-generated T&amp;I outputs, using process tracing methodologies such as eye-tracking, keystroke logging, and think-aloud protocols.</li>
+                <li><strong>Reception and processing of T&amp;I products:</strong> Investigating how readers and listeners comprehend human- and AI-generated T&amp;I through computational psycholinguistic approaches and multimodal behavioral data.</li>
+                <li><strong>LLM-based automated T&amp;I evaluation:</strong> Applying, configuring, and fine-tuning large language models for automated quality evaluation, with a focus on reliability, alignment with human judgment, and validity.</li>
+                <li><strong>Human–AI collaboration in language evaluation:</strong> Examining synergistic integration of human expertise and machine intelligence in formative feedback, summative evaluation, and instructional contexts.</li>
+                <li><strong>Meta-research in T&amp;I and language assessment:</strong> Conducting systematic reviews, bibliometric analyses, and meta-analyses to trace methodological evolution and inform evidence-based scholarship.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section" id="contact">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h4><i class="fa-solid fa-location-dot"></i> Lab Location</h4>
+                <p>
+                    T&amp;I NUS Research Lab<br>
+                    Department of Chinese Studies<br>
+                    Faculty of Arts &amp; Social Sciences<br>
+                    National University of Singapore<br>
+                    21 Lower Kent Ridge Road<br>
+                    Singapore 119077<br>
+                    <i class="fa-solid fa-phone" style="color:#7c3aed;font-size:0.8rem;margin-right:0.3rem;"></i>
+                    <a href="tel:+6565166666">+65 6516 6666</a>
+                </p>
+            </div>
+            <div class="contact-card">
+                <h4><i class="fa-solid fa-envelope"></i> Get in Touch</h4>
+                <p>
+                    Lab Director: <strong>Prof. Chao Han</strong><br>
+                    📧 <a href="mailto:chaohan@nus.edu.sg">chaohan@nus.edu.sg</a><br>
+                    <a href="https://discovery.nus.edu.sg/25035-chao-han/about" target="_blank">NUS Discovery Profile</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="recruit-box">
+            The lab welcomes highly motivated <strong>PhD students, researchers, and collaborators</strong>
+            from diverse backgrounds — including T&amp;I studies, language assessment, computational linguistics,
+            cognitive psychology, and related fields.<br><br>
+            Prospective students and collaborators are encouraged to contact the lab director with a research proposal,
+            CV, and academic transcripts.
+        </div>
+
+        <p class="contact-subtitle">Selected courses by the lab director at NUS</p>
+        <div class="teach-grid">
+            <div class="teach-card">
+                <div class="teach-code">INT3204</div>
+                <div class="teach-name">Advanced Interpreting</div>
+                <div class="teach-cn">进阶口译</div>
+            </div>
+            <div class="teach-card">
+                <div class="teach-code">CH6263</div>
+                <div class="teach-name">Translation: Formal, Cultural, Political</div>
+                <div class="teach-cn">翻译：形式、文化、政治</div>
+            </div>
+            <div class="teach-card">
+                <div class="teach-code">CHC5323</div>
+                <div class="teach-name">Special Topics in Chinese Linguistics</div>
+                <div class="teach-cn">汉语语言学研究专题</div>
+            </div>
+            <div class="teach-card">
+                <div class="teach-code">CHC5328</div>
+                <div class="teach-name">Testing and Assessment of Chinese Language</div>
+                <div class="teach-cn">中文测试与评估</div>
+            </div>
+        </div>
+
+        <p class="contact-subtitle">Editorial &amp; Professional Services</p>
+        <div class="services-box">
+            <i class="fa-solid fa-pen-nib" style="color:#7c3aed;margin-right:0.5rem;"></i>
+            Lab Director Prof. Chao Han serves as <strong>Associate Editor</strong> of <em>Language Testing in Asia</em> (Springer Nature)
+            and sits on the Editorial/Advisory Board of <strong>Language Testing</strong> (Sage) and
+            <strong>Interpreting</strong> (John Benjamins).
+        </div>
+    </section>
+
+</div>
+</div>
+
+<footer>
+    <p>© 2026 T&amp;I NUS &nbsp;·&nbsp; Translation &amp; Interpreting Research Lab &nbsp;·&nbsp; National University of Singapore</p>
+    <p style="margin-top:0.3rem;">Design inspired by <a href="https://anzhang314.github.io/" target="_blank">An Zhang</a></p>
+</footer>
+
+<script>
+(function () {
+    var track = document.getElementById('team-track');
+    var viewport = document.getElementById('team-carousel');
+    var prevBtn = document.getElementById('team-prev');
+    var nextBtn = document.getElementById('team-next');
+    var counter = document.getElementById('team-counter');
+    var dotsWrap = document.getElementById('team-dots');
+    if (!track || !viewport) return;
+
+    var slides = track.querySelectorAll('.team-slide');
+    var dots = dotsWrap ? dotsWrap.querySelectorAll('.carousel-dot') : [];
+    var total = slides.length;
+    var index = 0;
+    var touchStartX = 0;
+    var touchDeltaX = 0;
+    var AUTOPLAY_MS = 3000;
+    var timer = null;
+
+    function goTo(i) {
+        index = Math.max(0, Math.min(total - 1, i));
+        track.style.transform = 'translateX(-' + (index * 100) + '%)';
+        if (counter) counter.textContent = (index + 1) + ' / ' + total;
+        if (prevBtn) prevBtn.disabled = index === 0;
+        if (nextBtn) nextBtn.disabled = index === total - 1;
+        dots.forEach(function (dot, j) {
+            dot.classList.toggle('active', j === index);
+        });
+    }
+
+    function nextSlide() {
+        goTo(index + 1 >= total ? 0 : index + 1);
+    }
+
+    function startAutoplay() {
+        stopAutoplay();
+        timer = setInterval(nextSlide, AUTOPLAY_MS);
+    }
+
+    function stopAutoplay() {
+        if (timer) {
+            clearInterval(timer);
+            timer = null;
+        }
+    }
+
+    function resetAutoplay() {
+        stopAutoplay();
+        startAutoplay();
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', function () { goTo(index - 1); resetAutoplay(); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { goTo(index + 1); resetAutoplay(); });
+    dots.forEach(function (dot) {
+        dot.addEventListener('click', function () {
+            goTo(parseInt(dot.getAttribute('data-index'), 10));
+            resetAutoplay();
+        });
+    });
+
+    viewport.addEventListener('mouseenter', stopAutoplay);
+    viewport.addEventListener('mouseleave', startAutoplay);
+
+    viewport.addEventListener('touchstart', function (e) {
+        touchStartX = e.changedTouches[0].clientX;
+        touchDeltaX = 0;
+        stopAutoplay();
+    }, { passive: true });
+
+    viewport.addEventListener('touchmove', function (e) {
+        touchDeltaX = e.changedTouches[0].clientX - touchStartX;
+    }, { passive: true });
+
+    viewport.addEventListener('touchend', function () {
+        if (Math.abs(touchDeltaX) >= 40) {
+            goTo(touchDeltaX < 0 ? index + 1 : index - 1);
+        }
+        startAutoplay();
+    });
+
+    goTo(0);
+    startAutoplay();
+})();
+</script>
+
+</body>
+</html>
