@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
+        :root { --scroll-offset: 7rem; }
+        html { scroll-behavior: smooth; scroll-padding-top: var(--scroll-offset); }
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             color: #1e293b;
@@ -197,27 +198,32 @@
             font-weight: 500;
         }
 
-        .rt-panel {
+        .proj-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.1rem;
+            margin-top: 1.6rem;
+        }
+        .proj-card {
             background: #fff;
             border: 1px solid #e9e3f8;
-            border-radius: 12px;
-            padding: 1.15rem 1.4rem;
-            margin-top: 0.9rem;
+            border-radius: 14px;
+            padding: 1.35rem 1.25rem 1.2rem;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .rt-header { display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.65rem; }
-        .rt-header i { color: #7c3aed; font-size: 0.9rem; }
-        .rt-header strong { font-size: 0.92rem; color: #1e293b; }
-        .rt-list { list-style: none; padding: 0; }
-        .rt-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.5rem;
-            font-size: 0.855rem;
-            color: #4b5563;
-            margin-bottom: 0.38rem;
-            line-height: 1.5;
+        .proj-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(109,40,217,0.1); }
+        .proj-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
+        .proj-icon {
+            width: 40px; height: 40px;
+            background: #f5f3ff;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 0.85rem;
+            font-size: 1.05rem;
+            color: #7c3aed;
         }
-        .rt-list li::before { content: '›'; color: #7c3aed; font-weight: 700; flex-shrink: 0; }
+        .proj-card h4 { font-size: 0.92rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem; line-height: 1.35; }
+        .proj-card p { font-size: 0.84rem; color: #64748b; line-height: 1.6; }
 
         .teach-grid {
             display: grid;
@@ -553,7 +559,10 @@
         footer a:hover { color: #7c3aed; }
 
         @media (max-width: 768px) {
+            :root { --scroll-offset: 9.5rem; }
             .ri-grid { grid-template-columns: 1fr 1fr; }
+            .proj-grid { grid-template-columns: 1fr; }
+            .proj-card:last-child:nth-child(odd) { grid-column: auto; }
             .teach-grid { grid-template-columns: 1fr; }
             .contact-grid { grid-template-columns: 1fr; }
             .news-item { flex-direction: column; gap: 0.6rem; }
@@ -600,7 +609,7 @@
         <div class="hero-text">
             <div class="lab-badge"><i class="fa-solid fa-flask-vial"></i> Translation &amp; Interpreting Research Lab</div>
             <h1>T&amp;I NUS</h1>
-            <p class="hero-subtitle">Quality Assessment &nbsp;·&nbsp; Language Technology &nbsp;·&nbsp; Human–AI Evaluation</p>
+            <!-- <p class="hero-subtitle">Quality Assessment &nbsp;·&nbsp; Language Technology &nbsp;·&nbsp; Human–AI Evaluation</p> -->
 
             <div class="hero-affil">
                 <i class="fa-solid fa-building-columns"></i>
@@ -915,18 +924,32 @@
 
     <section class="section" id="projects">
         <h2 class="section-title">Projects</h2>
-        <div class="rt-panel" style="margin-top:0;">
-            <div class="rt-header">
-                <i class="fa-solid fa-microscope"></i>
-                <strong>Current Research Projects</strong>
+        <div class="proj-grid">
+            <div class="proj-card">
+                <div class="proj-icon"><i class="fa-solid fa-brain"></i></div>
+                <h4>Cognitive Processes of Human Evaluators</h4>
+                <p>Modeling mental operations and decision-making strategies in assessing human- and machine-generated T&amp;I outputs, using process tracing methodologies such as eye-tracking, keystroke logging, and think-aloud protocols.</p>
             </div>
-            <ul class="rt-list">
-                <li><strong>Cognitive processes of human evaluators:</strong> Modeling mental operations and decision-making strategies in assessing human- and machine-generated T&amp;I outputs, using process tracing methodologies such as eye-tracking, keystroke logging, and think-aloud protocols.</li>
-                <li><strong>Reception and processing of T&amp;I products:</strong> Investigating how readers and listeners comprehend human- and AI-generated T&amp;I through computational psycholinguistic approaches and multimodal behavioral data.</li>
-                <li><strong>LLM-based automated T&amp;I evaluation:</strong> Applying, configuring, and fine-tuning large language models for automated quality evaluation, with a focus on reliability, alignment with human judgment, and validity.</li>
-                <li><strong>Human–AI collaboration in language evaluation:</strong> Examining synergistic integration of human expertise and machine intelligence in formative feedback, summative evaluation, and instructional contexts.</li>
-                <li><strong>Meta-research in T&amp;I and language assessment:</strong> Conducting systematic reviews, bibliometric analyses, and meta-analyses to trace methodological evolution and inform evidence-based scholarship.</li>
-            </ul>
+            <div class="proj-card">
+                <div class="proj-icon"><i class="fa-solid fa-ear-listen"></i></div>
+                <h4>Reception and Processing of T&amp;I Products</h4>
+                <p>Investigating how readers and listeners comprehend human- and AI-generated T&amp;I through computational psycholinguistic approaches and multimodal behavioral data.</p>
+            </div>
+            <div class="proj-card">
+                <div class="proj-icon"><i class="fa-solid fa-robot"></i></div>
+                <h4>LLM-based Automated T&amp;I Evaluation</h4>
+                <p>Applying, configuring, and fine-tuning large language models for automated quality evaluation, with a focus on reliability, alignment with human judgment, and validity.</p>
+            </div>
+            <div class="proj-card">
+                <div class="proj-icon"><i class="fa-solid fa-people-arrows"></i></div>
+                <h4>Human–AI Collaboration in Language Evaluation</h4>
+                <p>Examining synergistic integration of human expertise and machine intelligence in formative feedback, summative evaluation, and instructional contexts.</p>
+            </div>
+            <div class="proj-card">
+                <div class="proj-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <h4>Meta-research in T&amp;I and Language Assessment</h4>
+                <p>Conducting systematic reviews, bibliometric analyses, and meta-analyses to trace methodological evolution and inform evidence-based scholarship.</p>
+            </div>
         </div>
     </section>
 
@@ -936,10 +959,6 @@
             <div class="contact-card">
                 <h4><i class="fa-solid fa-location-dot"></i> Lab Location</h4>
                 <p>
-                    T&amp;I NUS Research Lab<br>
-                    Department of Chinese Studies<br>
-                    Faculty of Arts &amp; Social Sciences<br>
-                    National University of Singapore<br>
                     21 Lower Kent Ridge Road<br>
                     Singapore 119077<br>
                     <i class="fa-solid fa-phone" style="color:#7c3aed;font-size:0.8rem;margin-right:0.3rem;"></i>
@@ -949,9 +968,8 @@
             <div class="contact-card">
                 <h4><i class="fa-solid fa-envelope"></i> Get in Touch</h4>
                 <p>
-                    Lab Director: <strong>Prof. Chao Han</strong><br>
+                    Lab Director: <strong>Chao Han</strong><br>
                     📧 <a href="mailto:chaohan@nus.edu.sg">chaohan@nus.edu.sg</a><br>
-                    <a href="https://discovery.nus.edu.sg/25035-chao-han/about" target="_blank">NUS Discovery Profile</a>
                 </p>
             </div>
         </div>
@@ -1087,6 +1105,51 @@
 
     goTo(0);
     startAutoplay();
+})();
+
+(function () {
+    var EXTRA = 20;
+
+    function scrollOffset() {
+        var nav = document.querySelector('nav');
+        return (nav ? nav.offsetHeight : 54) + EXTRA;
+    }
+
+    function syncScrollPadding() {
+        document.documentElement.style.setProperty('--scroll-offset', scrollOffset() + 'px');
+    }
+
+    function scrollToTarget(el, smooth) {
+        if (!el) return;
+        var top = el.getBoundingClientRect().top + window.scrollY - scrollOffset();
+        window.scrollTo({ top: Math.max(0, top), behavior: smooth ? 'smooth' : 'auto' });
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+            var hash = a.getAttribute('href');
+            if (!hash || hash === '#') return;
+            var target = document.querySelector(hash);
+            if (!target) return;
+            e.preventDefault();
+            history.pushState(null, '', hash);
+            scrollToTarget(target, true);
+        });
+    });
+
+    function scrollToHash(smooth) {
+        if (!location.hash) return;
+        var target = document.querySelector(location.hash);
+        if (target) scrollToTarget(target, smooth);
+    }
+
+    syncScrollPadding();
+    window.addEventListener('resize', syncScrollPadding);
+    window.addEventListener('load', function () {
+        syncScrollPadding();
+        scrollToHash(false);
+    });
+    window.addEventListener('hashchange', function () { scrollToHash(true); });
 })();
 </script>
 

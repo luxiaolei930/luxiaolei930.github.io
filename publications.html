@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
+        :root { --scroll-offset: 7rem; }
+        html { scroll-behavior: smooth; scroll-padding-top: var(--scroll-offset); }
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             color: #1e293b;
@@ -189,6 +190,7 @@
         footer a:hover { color: #7c3aed; }
 
         @media (max-width: 600px) {
+            :root { --scroll-offset: 9.5rem; }
             .pub-entry { flex-direction: column; gap: 0.5rem; }
             .venue { min-width: auto; }
             nav { padding: 0.75rem 1rem; height: auto; min-height: 54px; flex-wrap: wrap; gap: 0.5rem; }
@@ -235,11 +237,11 @@
 <div class="pubs-body">
 <div class="container">
 
-    <div class="pub-note">
+    <!-- <div class="pub-note">
         <i class="fa-solid fa-circle-info" style="color:#7c3aed;margin-right:0.4rem;"></i>
         Lab publication list (78 entries, 2015–2026), primarily by Lab Director Prof. Chao Han and collaborators. Source:
         <a href="https://discovery.nus.edu.sg/25035-chao-han/publications" target="_blank">NUS Discovery</a>.
-    </div>
+    </div> -->
 
     <div class="pub-filter-wrap">
         <div class="filter-header"><i class="fa-solid fa-filter"></i> Filter by Topic</div>
